@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
 import {
     TrendingUp,
     CheckCircle2,
@@ -14,6 +16,33 @@ import './Predictions.css';
 
 export default function Predictions() {
     const { predictions, subjects } = useApp();
+    const { profile, updateProfile } = useAuth();
+    const targetAttr = profile?.target_attendance || 75;
+
+    const [localTarget, setLocalTarget] = useState(targetAttr);
+
+    useEffect(() => {
+        setLocalTarget(targetAttr);
+    }, [targetAttr]);
+
+    const handleTargetChange = (e) => {
+        let val = parseInt(e.target.value);
+        if (isNaN(val)) val = '';
+        setLocalTarget(val);
+    };
+
+    const handleTargetBlur = async () => {
+        let finalVal = localTarget;
+        if (finalVal < 1) finalVal = 1;
+        if (finalVal > 100) finalVal = 100;
+
+        if (finalVal !== targetAttr && finalVal !== '') {
+            await updateProfile({ target_attendance: finalVal });
+            setLocalTarget(finalVal);
+        } else {
+            setLocalTarget(targetAttr);
+        }
+    };
 
     const predsArray = Object.values(predictions);
     const hasData = predsArray.length > 0;
@@ -26,7 +55,7 @@ export default function Predictions() {
                         <span className="gradient-text">Attendance Predictor</span>
                     </h1>
                     <p className="page-subtitle">
-                        See how many classes you can safely miss while maintaining 75% attendance
+                        See how many classes you can safely miss while maintaining {targetAttr}% attendance
                     </p>
                 </div>
             </div>
@@ -58,8 +87,27 @@ export default function Predictions() {
                         </div>
                         <div className="summary-card glass-card summary-card--target">
                             <Target size={22} />
-                            <div className="summary-card-value">75%</div>
-                            <div className="summary-card-label">Required</div>
+                            <div className="summary-card-value" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                <input
+                                    type="number"
+                                    value={localTarget}
+                                    onChange={handleTargetChange}
+                                    onBlur={handleTargetBlur}
+                                    style={{
+                                        width: '60px',
+                                        background: 'transparent',
+                                        border: '1px solid rgba(255,255,255,0.1)',
+                                        color: 'inherit',
+                                        fontSize: 'inherit',
+                                        fontWeight: 'inherit',
+                                        textAlign: 'center',
+                                        borderRadius: 'var(--radius-sm)',
+                                        outline: 'none',
+                                    }}
+                                />
+                                %
+                            </div>
+                            <div className="summary-card-label">Required (Editable)</div>
                         </div>
                     </div>
 
@@ -87,8 +135,8 @@ export default function Predictions() {
                                             className={`prediction-bar-fill prediction-bar-fill--${pred.status}`}
                                             style={{ width: `${Math.min(pred.percentage, 100)}%` }}
                                         />
-                                        <div className="prediction-bar-threshold" style={{ left: '75%' }}>
-                                            <span className="prediction-bar-threshold-label">75%</span>
+                                        <div className="prediction-bar-threshold" style={{ left: `${targetAttr}%` }}>
+                                            <span className="prediction-bar-threshold-label">{targetAttr}%</span>
                                         </div>
                                     </div>
                                     <div className="prediction-bar-info">
@@ -147,7 +195,7 @@ export default function Predictions() {
                                             <ArrowDown size={16} />
                                             <div>
                                                 <strong>Can miss {pred.canMiss} more classes</strong>
-                                                <span>and still maintain 75% attendance</span>
+                                                <span>and still maintain {targetAttr}% attendance</span>
                                             </div>
                                         </>
                                     ) : pred.mustAttend > 0 ? (
@@ -155,7 +203,7 @@ export default function Predictions() {
                                             <ArrowUp size={16} />
                                             <div>
                                                 <strong>Must attend {pred.mustAttend} more classes</strong>
-                                                <span>to reach 75% attendance</span>
+                                                <span>to reach {targetAttr}% attendance</span>
                                             </div>
                                         </>
                                     ) : (

@@ -9,8 +9,11 @@ import {
     GraduationCap,
     Menu,
     X,
+    LogOut,
+    User
 } from 'lucide-react';
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 import './Sidebar.css';
 
 const navItems = [
@@ -26,6 +29,7 @@ const navItems = [
 export default function Sidebar() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const location = useLocation();
+    const { profile, signOut } = useAuth();
 
     return (
         <>
@@ -75,9 +79,17 @@ export default function Sidebar() {
                 </nav>
 
                 <div className="sidebar-footer">
-                    <div className="sidebar-footer-card">
-                        <p className="sidebar-footer-text">Track smart, never miss a class 🎯</p>
+                    <div className="sidebar-user-profile" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', padding: '0 0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                        <User size={18} />
+                        <span style={{ fontWeight: 600 }}>{profile?.username || 'Student'}</span>
                     </div>
+                    <button
+                        onClick={signOut}
+                        className="btn"
+                        style={{ width: '100%', display: 'flex', justifyContent: 'center', background: 'rgba(239, 68, 68, 0.1)', color: 'var(--danger-400)', border: '1px solid rgba(239, 68, 68, 0.2)' }}
+                    >
+                        <LogOut size={16} /> Sign Out
+                    </button>
                 </div>
             </aside>
         </>

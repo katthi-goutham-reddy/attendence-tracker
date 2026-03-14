@@ -50,7 +50,7 @@ function stripTime(date) {
 /**
  * Calculate attendance stats for each subject
  */
-export function calculateAttendanceStats(sessions, subjects) {
+export function calculateAttendanceStats(sessions, subjects, targetAttendance = 75) {
   const stats = {};
 
   for (const subject of subjects) {
@@ -69,7 +69,7 @@ export function calculateAttendanceStats(sessions, subjects) {
       total,
       marked,
       percentage,
-      status: percentage >= 75 ? 'safe' : percentage >= 70 ? 'warning' : 'danger',
+      status: percentage >= targetAttendance ? 'safe' : percentage >= (targetAttendance - 5) ? 'warning' : 'danger',
     };
   }
 

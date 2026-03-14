@@ -1,0 +1,260 @@
+.predictions-page {
+    padding: var(--space-xl) var(--space-2xl);
+}
+
+/* Summary cards */
+.prediction-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+}
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xl);
+    text-align: center;
+}
+
+.summary-card--safe {
+    color: var(--success-400);
+}
+
+.summary-card--at-risk {
+    color: var(--danger-400);
+}
+
+.summary-card--target {
+    color: var(--primary-400);
+}
+
+.summary-card-value {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.summary-card-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Prediction grid */
+.prediction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: var(--space-lg);
+}
+
+.prediction-card {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.prediction-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.prediction-card-name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Attendance bar */
+.prediction-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.prediction-bar-bg {
+    position: relative;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-full);
+    overflow: visible;
+}
+
+.prediction-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.8s ease;
+}
+
+.prediction-bar-fill--safe {
+    background: linear-gradient(90deg, var(--success-500), var(--success-400));
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.3);
+}
+
+.prediction-bar-fill--warning {
+    background: linear-gradient(90deg, var(--warning-500), var(--warning-400));
+    box-shadow: 0 0 8px rgba(234, 179, 8, 0.3);
+}
+
+.prediction-bar-fill--danger {
+    background: linear-gradient(90deg, var(--danger-500), var(--danger-400));
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+}
+
+.prediction-bar-threshold {
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    width: 2px;
+    background: var(--text-muted);
+    transform: translateX(-50%);
+}
+
+.prediction-bar-threshold-label {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.prediction-bar-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Stats */
+.prediction-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+}
+
+.prediction-stat {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--bg-glass);
+    border-radius: var(--radius-md);
+}
+
+.prediction-stat-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.prediction-stat-icon--total {
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--primary-400);
+}
+
+.prediction-stat-icon--attended {
+    background: rgba(34, 197, 94, 0.12);
+    color: var(--success-400);
+}
+
+.prediction-stat-icon--required {
+    background: rgba(234, 179, 8, 0.12);
+    color: var(--warning-400);
+}
+
+.prediction-stat-icon--remaining {
+    background: rgba(236, 72, 153, 0.12);
+    color: var(--accent-400);
+}
+
+.prediction-stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.prediction-stat-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.prediction-stat-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Insight */
+.prediction-insight {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+}
+
+.prediction-insight div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.prediction-insight strong {
+    font-weight: 700;
+}
+
+.prediction-insight span {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.prediction-insight--safe {
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+    color: var(--success-400);
+}
+
+.prediction-insight--danger {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    color: var(--danger-400);
+}
+
+@media (max-width: 768px) {
+    .predictions-page {
+        padding: var(--space-xl) var(--space-md);
+        padding-top: 4.5rem;
+    }
+
+    .prediction-summary {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-sm);
+    }
+
+    .summary-card {
+        padding: var(--space-md);
+    }
+
+    .summary-card-value {
+        font-size: 1.5rem;
+    }
+
+    .prediction-grid {
+        grid-template-columns: 1fr;
+    }
+}

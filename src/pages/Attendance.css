@@ -1,0 +1,209 @@
+.attendance-page {
+    padding: var(--space-xl) var(--space-2xl);
+}
+
+/* Filters */
+.attendance-filters {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    position: relative;
+}
+
+.filter-icon {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.filter-select,
+.filter-input {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+    font-family: var(--font-sans);
+    transition: border-color var(--transition-fast);
+    cursor: pointer;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    border-color: var(--primary-500);
+    outline: none;
+}
+
+.filter-select option {
+    background: var(--gray-800);
+    color: var(--text-primary);
+}
+
+.filter-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger-400);
+    cursor: pointer;
+    border: none;
+    transition: background var(--transition-fast);
+}
+
+.filter-clear:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* Date group */
+.attendance-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.attendance-date-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.attendance-date-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.attendance-date-count {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.attendance-sessions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.attendance-session {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+}
+
+.session-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.session-subject {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.session-status {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.session-status--present {
+    background: rgba(34, 197, 94, 0.12);
+    color: var(--success-400);
+}
+
+.session-status--absent {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--danger-400);
+}
+
+.session-status--unmarked {
+    background: rgba(148, 163, 184, 0.1);
+    color: var(--text-muted);
+}
+
+.session-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.session-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.session-btn:hover {
+    background: var(--bg-glass-hover);
+}
+
+.session-btn--present:hover,
+.session-btn--present.session-btn--active {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: var(--success-400);
+    color: var(--success-400);
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.2);
+}
+
+.session-btn--absent:hover,
+.session-btn--absent.session-btn--active {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: var(--danger-400);
+    color: var(--danger-400);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.2);
+}
+
+.attendance-empty {
+    padding: var(--space-2xl);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .attendance-page {
+        padding: var(--space-xl) var(--space-md);
+        padding-top: 4.5rem;
+    }
+
+    .attendance-filters {
+        flex-direction: column;
+    }
+
+    .attendance-session {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+    }
+
+    .session-actions {
+        align-self: flex-end;
+    }
+}

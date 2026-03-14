@@ -14,11 +14,10 @@ import {
 import './Dashboard.css';
 
 export default function Dashboard() {
-    const { subjects, overallStats, stats, predictions, sessions, semester } = useApp();
+    const { subjects, overallStats, stats, predictions, semester } = useApp();
 
     const hasData = subjects.length > 0 && semester.startDate && semester.endDate;
     const statsArray = Object.values(stats);
-    const predsArray = Object.values(predictions);
 
     return (
         <div className="dashboard animate-fadeIn">

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { Calendar, Plus, Trash2 } from 'lucide-react';
-import { WEEKDAYS, getWeekdayLabel } from '../utils/helpers';
+import { WEEKDAYS } from '../utils/helpers';
 import './FormPages.css';
 
 export default function Timetable() {

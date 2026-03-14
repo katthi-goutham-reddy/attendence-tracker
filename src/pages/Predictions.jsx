@@ -15,7 +15,7 @@ import {
 import './Predictions.css';
 
 export default function Predictions() {
-    const { predictions, subjects } = useApp();
+    const { predictions } = useApp();
     const { profile, updateProfile } = useAuth();
     const targetAttr = profile?.target_attendance || 75;
 

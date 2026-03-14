@@ -273,7 +273,7 @@ export function AppProvider({ children }) {
         }));
     }, [semester, timetable, holidays, attendanceLookup]);
 
-    const { user, profile } = useAuth();
+    const { profile } = useAuth();
 
     // ──────────────────── COMPUTED: STATS ────────────────────
     const targetAttr = profile?.target_attendance || 75;

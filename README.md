@@ -1,16 +1,53 @@
-# React + Vite
+# Attendance Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite app to manage semester attendance with Supabase auth and data storage.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 20+
+- npm
 
-## React Compiler
+## Environment Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Copy `.env.example` to `.env`.
+2. Fill in your Supabase project values.
 
-## Expanding the ESLint configuration
+```env
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deployment
+
+### Vercel
+
+- Build command: `npm run build`
+- Output directory: `dist`
+- Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in project environment settings.
+- `vercel.json` is included for SPA fallback routing.
+
+### Netlify
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in site environment settings.
+- `netlify.toml` is included for SPA fallback routing.
+
+## Security Notes
+
+- Keep only the anon key on frontend.
+- Enable Supabase RLS and policies for all app tables before production use.

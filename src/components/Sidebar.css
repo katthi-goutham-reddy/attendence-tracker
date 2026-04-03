@@ -6,12 +6,13 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: rgba(10, 14, 26, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-right: 1px solid var(--border-subtle);
+    background: rgba(9, 9, 11, 0.85); /* Darker and more transparent */
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border-right: 1px solid var(--border-default);
     z-index: 100;
-    transition: transform var(--transition-base);
+    transition: transform var(--transition-slow);
+    box-shadow: 1px 0 24px rgba(0, 0, 0, 0.5);
 }
 
 /* Brand */
@@ -76,7 +77,7 @@
     color: var(--text-secondary);
     font-size: 0.875rem;
     font-weight: 500;
-    transition: all var(--transition-fast);
+    transition: background var(--transition-base), color var(--transition-base), transform var(--transition-base);
     position: relative;
     overflow: hidden;
 }
@@ -84,6 +85,7 @@
 .sidebar-link:hover {
     background: var(--bg-glass-hover);
     color: var(--text-primary);
+    transform: translateX(4px);
 }
 
 .sidebar-link--active {

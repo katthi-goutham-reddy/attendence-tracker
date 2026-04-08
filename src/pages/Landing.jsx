@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { GraduationCap, ArrowRight, Mail, Lock, User } from 'lucide-react';
+import { FloatingPaths } from '../components/ui/background-paths';
 import './Landing.css';
 
 export default function Landing() {
@@ -43,11 +44,12 @@ export default function Landing() {
     };
 
     return (
-        <div className="landing-page">
-            <div className="landing-background">
-                <div className="glow-orb orb-1"></div>
-                <div className="glow-orb orb-2"></div>
+        <div className="landing-page dark">
+            <div className="absolute inset-0">
+                <FloatingPaths position={1} />
+                <FloatingPaths position={-1} />
             </div>
+
 
             <div className="landing-content">
                 <div className="landing-brand animate-slideInLeft">
